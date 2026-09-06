@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="680" viewBox="0 0 1440 680" role="img" aria-labelledby="title desc">
+<title id="title">Notion Dictionary Automation</title><desc id="desc">Terminal word input is sent to Gemini. The resulting word, definition and example are posted to ActivePieces. An external flow updates Notion.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#78c6b8" stroke-width="1.5"/></marker></defs>
+<rect width="1440" height="680" rx="18" fill="#111719"/>
+<g font-family="Inter, DejaVu Sans, sans-serif">
+<text x="66" y="74" font-size="15" letter-spacing="3" fill="#78c6b8">PYTHON / GEMINI / ACTIVEPIECES</text>
+<text x="64" y="135" font-size="44" font-weight="600" fill="#f1f3ee">One word. A useful entry.</text>
+<text x="66" y="176" font-size="21" fill="#adb9b8">Bir kelimeden anlam ve örnek cümleye.</text>
+<path d="M66 208H1374" stroke="#304044"/>
+<g fill="#1b2528" stroke="#35474b"><rect x="66" y="265" width="276" height="166" rx="12"/><rect x="404" y="265" width="276" height="166" rx="12"/><rect x="742" y="265" width="276" height="166" rx="12"/><rect x="1080" y="265" width="294" height="166" rx="12" fill="#172121" stroke="#78c6b8" stroke-dasharray="6 5"/></g>
+<g fill="#f1f3ee" font-size="27" font-weight="600"><text x="90" y="316">Terminal</text><text x="428" y="316">Gemini</text><text x="766" y="316">ActivePieces</text><text x="1104" y="316">Notion</text></g>
+<g fill="#adb9b8" font-size="18"><text x="90" y="359">Enter a word</text><text x="90" y="390">Bir kelime gir</text><text x="428" y="359">Meaning + example</text><text x="428" y="390">Anlam + örnek</text><text x="766" y="359">Receive JSON</text><text x="766" y="390">Webhook ile al</text><text x="1104" y="359">Update your entry</text><text x="1104" y="390">Kaydını güncelle</text></g>
+<g stroke="#78c6b8" stroke-width="2" marker-end="url(#arrow)"><path d="M353 348H390"/><path d="M691 348H728"/><path d="M1029 348H1066" stroke-dasharray="4 4"/></g>
+<rect x="66" y="478" width="952" height="106" rx="10" fill="#0c1113"/>
+<text x="90" y="512" font-family="monospace" font-size="15" fill="#78c6b8">POST payload</text>
+<text x="90" y="552" font-family="monospace" font-size="21" fill="#e4e9e4">{ "kelime": "clarity", "anlam": "...", "cumle": "..." }</text>
+<text x="1080" y="509" font-size="16" fill="#78c6b8">EXTERNAL FLOW</text><text x="1080" y="543" font-size="17" fill="#adb9b8">Configured in ActivePieces</text><text x="1080" y="568" font-size="17" fill="#adb9b8">Harici akış yapılandırması</text>
+<text x="66" y="635" font-size="14" fill="#839693">Implementation flow / Uygulama akışı — main.py</text>
+</g></svg>

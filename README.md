@@ -1,63 +1,57 @@
-# Gemini & Notion Destekli Akıllı Sözlük Otomasyonu
+# Notion Dictionary Automation
 
-Bu proje, Notion'ı kişisel bir kelime öğrenme veritabanı olarak kullanarak, yeni eklenen her kelimenin anlamını ve örnek cümlesini Google Gemini API'si aracılığıyla otomatik olarak bulan ve ilgili Notion sayfasına ekleyen bir otomasyon sistemidir.
+[English](#english) · [Türkçe](#türkçe)
 
----
+![Word → Gemini → ActivePieces → Notion integration / Kelime → Gemini → ActivePieces → Notion entegrasyonu](assets/workflow.svg)
 
-### 🌟 Projenin Amacı
+## English
 
-Kişisel bir kelime öğrenme ve sözlük veritabanı oluşturma sürecini otomatize etmek. Manuel olarak anlam arama ve kopyala-yapıştır yapma ihtiyacını ortadan kaldırır.
+A Python terminal workflow that asks Gemini for a word’s meaning and an example sentence, then sends the result to an ActivePieces webhook for your Notion integration.
 
-### 🎥 Demo
+### Features
 
-<img width="1246" height="243" alt="image" src="https://github.com/user-attachments/assets/51d276bb-509c-4967-837d-7f97fa81df5b" />
-<img width="542" height="207" alt="image" src="https://github.com/user-attachments/assets/19ad7cc9-549f-4f6f-aa6d-bcb5265d941a" />
+- Interactive word input in the terminal.
+- Gemini JSON response containing a definition and example sentence.
+- Webhook payload with `kelime`, `anlam` and `cumle`.
+- The Notion update is configured in your external ActivePieces flow.
 
+### Getting started
 
----
+Install the Python dependencies. Create a local `.env` file with `API_KEY` for Gemini and `WEBHOOK_URL` for your ActivePieces flow, then run `python main.py`.
 
-### ⚙️ Sistemin İşleyişi
+```bash
+git clone https://github.com/talhacaglar/notion-dictionary-automation.git
+cd notion-dictionary-automation
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python main.py
+```
 
-1.  **Girdi:** Notion'daki "Kelimeler" veritabanına yeni bir kelime eklenir.
-2.  **Tetikleyici:** Notion'daki bu değişiklik, bir otomasyon aracı olan ActivePieces'i tetikler.
-3.  **Backend Çağrısı:** ActivePieces, bu Python betiğini çalıştıran bir webhook'a isteği yönlendirir.
-4.  **Yapay Zeka Sorgusu:** Python betiği, kelimeyi alarak Google Gemini API'sine gönderir ve JSON formatında anlam ve örnek cümle talep eder.
-5.  **Veri İşleme:** Betik, Gemini'den gelen JSON yanıtını işler.
-6.  **Güncelleme:** Son olarak, betik (veya ActivePieces) Notion API'sini kullanarak ilgili kelimenin sayfasını bulunan anlam ve örnek cümle ile günceller.
+Type a word at the prompt. Use `q`, `exit` or `çık` to stop. This script initiates from terminal input; it does not watch a Notion database or call the Notion API directly. The diagram shows that implementation and the external integration boundary.
 
----
+## Türkçe
 
-### 🔧 Teknik Yapı ve Kullanılan Teknolojiler
+Bir kelimenin anlamını ve örnek cümlesini Gemini’den alıp Notion entegrasyonunuz için sonucu ActivePieces webhook’una gönderen Python terminal akışı.
 
-* **Arayüz & Veri Tabanı:** Notion
-* **Backend & Mantık:** Python 3
-* **Yapay Zeka Modeli:** Google Gemini (`gemini-2.5-flash`)
-* **Entegrasyon & Otomasyon:** ActivePieces (Webhook ile)
-* **Kütüphaneler:** `google-generativeai`, `requests`, `python-dotenv`, `notion-client` *(Eğer Notion'ı Python ile güncelliyorsanız)*
+### Özellikler
 
----
+- Terminalden etkileşimli kelime girişi.
+- Anlam ve örnek cümle içeren Gemini JSON yanıtı.
+- `kelime`, `anlam` ve `cumle` alanlarını taşıyan webhook verisi.
+- Notion güncellemesi, harici ActivePieces akışınızda yapılandırılır.
 
-### 🚀 Kurulum ve Çalıştırma
+### Başlangıç
 
-Projenin Python betiğini çalıştırmak için:
+Python bağımlılıklarını kurun. Yerel `.env` dosyasında Gemini için `API_KEY`, ActivePieces akışınız için `WEBHOOK_URL` tanımlayın; ardından `python main.py` çalıştırın.
 
-1.  **Depoyu klonlayın:**
-    ```bash
-    git clone https://github.com/talhacaglar/notion-sozluk-otomasyonu.git
-    cd notion-sozluk-otomasyonu
-    ```
-2.  **Gerekli kütüphaneleri yükleyin:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-3.  **Ortam değişkenlerini ayarlayın:**
-    * Proje ana dizininde `.env` adıyla yer alan dosyaya aşağıdaki gerekli bilgileri giriniz.
-    * `API_KEY` ve `WEBHOOK_URL` bilgilerinizi bu dosyaya aşağıdaki formatta ekleyin:
-        ```
-        API_KEY=SIZIN_GEMINI_API_ANAHTARINIZ
-        WEBHOOK_URL=SIZIN_WEBHOOK_URL
-        ```
-4.  **Betiği çalıştırın:**
-    ```bash
-    python main.py
-    ```
+```bash
+git clone https://github.com/talhacaglar/notion-dictionary-automation.git
+cd notion-dictionary-automation
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python main.py
+```
+
+İsteme bir kelime yazın. Çıkmak için `q`, `exit` veya `çık` kullanın. Betik terminal girdisiyle başlar; Notion veritabanını izlemez ve Notion API’sini doğrudan çağırmaz. Diyagram bu uygulamayı ve harici entegrasyon sınırını gösterir.

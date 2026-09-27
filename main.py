@@ -15,13 +15,13 @@ webhook_url = os.getenv("WEBHOOK_URL")
 
 if not api_key or not webhook_url:
     print("HATA: Lütfen proje klasöründe .env adında bir dosya oluşturup içine API_KEY ve WEBHOOK_URL bilgilerinizi ekleyin.")
-    exit()
+    raise SystemExit(1)
 
 try:
     genai.configure(api_key=api_key)
 except Exception as e:
     print(f"Hata: API anahtarı yapılandırılamadı. {e}")
-    exit()
+    raise SystemExit(1)
 
 def yapay_zekadan_bilgi_al(kelime: str) -> tuple[str, str]:
     print(f"'{kelime}' kelimesi için Gemini'den bilgi alınıyor...")

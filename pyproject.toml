@@ -20,3 +20,6 @@ dependencies = [
 [project.scripts]
 # Kullanıcının terminale yazacağı komut ismi = Python Modülü:Fonksiyon Adı
 "notion-sozluk-uygulamasi" = "main:main"
+
+[tool.setuptools]
+py-modules = ["main"]
